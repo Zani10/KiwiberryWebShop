@@ -1,0 +1,18 @@
+[
+  {
+    "email": "test@example.com",
+    "password_hash": "pbkdf2:sha256:1000000$iJ4PNfPN16DaTqOR$c5b3c2159e95d7c00c19a9dfe4513a9b3b85663d1e3c1603184c2ec82c34ec69"
+  },
+  {
+    "email": "zanidobruna@hotmail.com",
+    "password_hash": "pbkdf2:sha256:1000000$F1jwrRASqULozpWj$99519fa1270967cf8b4e2c7a21f03487426b97f18ba4bb415f4753f63e6ed62f"
+  },
+  {
+    "email": "testuser@example.com",
+    "password_hash": "pbkdf2:sha256:1000000$CEtq688OdBsN2aUE$cef01bfbfc3748e67614ffeffb5a910755e8169ea7f241b4849883863f1a7dc3"
+  },
+  {
+    "email": "newuser@test.com",
+    "password_hash": "pbkdf2:sha256:1000000$HFVRNzoHMyFkA1oL$251a90139c822ac8f4c4c16ed208e2e5b4867d7069bf5a79b83f2023532e6bf9"
+  }
+]

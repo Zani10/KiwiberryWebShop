@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Scarlet September",
+    "price": 4.99,
+    "image_url": "https://www.tutifruti.at/image/cache/catalog/kiwi/scarlet-september-800x600.jpg",
+    "cultivar": "Scarlet September",
+    "description": "Red-blushed skin, sweet-tart flesh. Early season."
+  },
+  {
+    "id": 2,
+    "name": "Ananasnaya",
+    "price": 3.99,
+    "image_url": "https://www.tutifruti.sk/image/cache/catalog/kiwi/ananasnaya-1-800x600.jpg.webp",
+    "cultivar": "Ananasnaya",
+    "description": "Classic green mini-kiwi with aromatic, tropical notes."
+  },
+  {
+    "id": 3,
+    "name": "Ken's Red",
+    "price": 5.49,
+    "image_url": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ACAKRED_369_2912201418057.JPG",
+    "cultivar": "Ken's Red",
+    "description": "Red skin, red-tinged flesh; rich, berry-like flavor."
+  },
+  {
+    "id": 4,
+    "name": "Geneva",
+    "price": 4.49,
+    "image_url": "https://www.kiwiri.de/cdn/shop/files/kiwibeere_geneva_02.jpg?v=1737553734",
+    "cultivar": "Geneva",
+    "description": "Early ripening, balanced sweetness and acidity."
+  },
+  {
+    "id": 5,
+    "name": "Issai",
+    "price": 3.79,
+    "image_url": "https://www.diggers.com.au/cdn/shop/products/kiwiberry-issai-pkii_70e833ae-75a6-4b3e-a9a7-eb93c223554e.jpg?v=1637121025&width=1146",
+    "cultivar": "Issai",
+    "description": "Self-fertile, smooth green skin, mild sweetness."
+  },
+  {
+    "id": 6,
+    "name": "Fresh Jumbo",
+    "price": 5.99,
+    "image_url": "https://www.kiwiri.de/cdn/shop/files/kiwibeere_super-jumbo.jpg?v=1737622548",
+    "cultivar": "Fresh Jumbo",
+    "description": "Larger sized berries, juicy texture, dessert-friendly."
+  },
+  {
+    "id": 7,
+    "name": "Kiwi",
+    "price": 3.0,
+    "image_url": "https://nl-be.bakker.com/cdn/shop/files/ado_103453_1.jpg?v=1706094771&width=1946",
+    "cultivar": "Jenna",
+    "description": "Classic green mini-kiwi with aromatic, tropical notes."
+  }
+]

@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product - Admin{% endblock %}
+
+{% block extra_head %}
+<style>
+    .admin-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .admin-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        padding: 2rem;
+    }
+    
+    .admin-title {
+        color: #198754;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .required-mark {
+        color: #dc3545;
+        margin-left: 0.25rem;
+    }
+    
+    .form-control, .form-select {
+        border: 1px solid #ced4db;
+        border-radius: 6px;
+        padding: 0.6rem 0.9rem;
+        font-size: 0.95rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #198754;
+        box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+    }
+    
+    .input-group-text {
+        background: #198754;
+        color: white;
+        border: none;
+        font-weight: 600;
+    }
+    
+    .form-text {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin-top: 0.35rem;
+    }
+    
+    .error-text {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.35rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    
+    .btn-submit {
+        background: #198754;
+        border: none;
+        padding: 0.7rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .btn-submit:hover {
+        background: #146c43;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(25, 135, 84, 0.3);
+    }
+    
+    .btn-cancel {
+        color: #6c757d;
+        border: 1px solid #dee2e6;
+        padding: 0.7rem 1.5rem;
+        font-weight: 600;
+        background: white;
+        transition: all 0.2s;
+    }
+    
+    .btn-cancel:hover {
+        border-color: #198754;
+        color: #198754;
+    }
+    
+    .row-compact {
+        margin-bottom: 1.25rem;
+    }
+    
+    .row-compact:last-child {
+        margin-bottom: 0;
+    }
+    
+    .image-preview {
+        margin-top: 0.75rem;
+        max-height: 150px;
+        border-radius: 6px;
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="admin-card">
+        <h2 class="admin-title">
+            <i class="bi bi-plus-circle"></i> Add New Product
+        </h2>
+
+        <form method="POST">
+            <!-- Product Name & Price -->
+            <div class="row row-compact">
+                <div class="col-md-7">
+                    <label for="name" class="form-label">
+                        Product Name<span class="required-mark">*</span>
+                    </label>
+                    <input type="text"
+                           class="form-control {% if 'name' in errors %}is-invalid{% endif %}"
+                           id="name"
+                           name="name"
+                           placeholder="e.g., Scarlet September"
+                           value="{{ request.form.name if request.form.name else '' }}"
+                           required>
+                    {% if 'name' in errors %}
+                        <div class="error-text">
+                            <i class="bi bi-exclamation-circle"></i>{{ errors.name }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-5">
+                    <label for="price" class="form-label">
+                        Price<span class="required-mark">*</span>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number"
+                               class="form-control {% if 'price' in errors %}is-invalid{% endif %}"
+                               id="price"
+                               name="price"
+                               placeholder="0.00"
+                               step="0.01"
+                               min="0"
+                               value="{{ request.form.price if request.form.price else '' }}"
+                               required>
+                    </div>
+                    {% if 'price' in errors %}
+                        <div class="error-text">
+                            <i class="bi bi-exclamation-circle"></i>{{ errors.price }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Image URL -->
+            <div class="row-compact">
+                <label for="image_url" class="form-label">
+                    Image URL<span class="required-mark">*</span>
+                </label>
+                <input type="url"
+                       class="form-control {% if 'image_url' in errors %}is-invalid{% endif %}"
+                       id="image_url"
+                       name="image_url"
+                       placeholder="https://example.com/image.jpg"
+                       value="{{ request.form.image_url if request.form.image_url else '' }}"
+                       required>
+                <small class="form-text">Provide a valid image URL for the product</small>
+                {% if 'image_url' in errors %}
+                    <div class="error-text">
+                        <i class="bi bi-exclamation-circle"></i>{{ errors.image_url }}
+                    </div>
+                {% endif %}
+                <img src="" id="imagePreview" class="image-preview" alt="Preview">
+            </div>
+
+            <!-- Cultivar -->
+            <div class="row-compact">
+                <label for="cultivar" class="form-label">Cultivar</label>
+                <input type="text"
+                       class="form-control"
+                       id="cultivar"
+                       name="cultivar"
+                       placeholder="e.g., Ananasnaya (optional)"
+                       value="{{ request.form.cultivar if request.form.cultivar else '' }}">
+                <small class="form-text">Defaults to product name if left empty</small>
+            </div>
+
+            <!-- Description -->
+            <div class="row-compact">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control"
+                          id="description"
+                          name="description"
+                          rows="3"
+                          placeholder="Describe the taste, texture, or special features (optional)">{{ request.form.description if request.form.description else '' }}</textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-2 justify-content-end mt-4">
+                <a href="{{ url_for('index') }}" class="btn btn-cancel">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-success btn-submit">
+                    <i class="bi bi-check-circle"></i> Add Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+// Simple image preview
+document.getElementById('image_url').addEventListener('input', function() {
+    const url = this.value.trim();
+    const preview = document.getElementById('imagePreview');
+    
+    if (url && (url.startsWith('http://') || url.startsWith('https://'))) {
+        preview.src = url;
+        preview.style.display = 'block';
+        preview.onerror = function() {
+            this.style.display = 'none';
+        };
+    } else {
+        preview.style.display = 'none';
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,215 @@
+/*
+Custom styling for Kiwiberry Orchard eCommerce site
+Light theming with subtle greens and modern design
+*/
+
+/* Root variables for consistent theming */
+:root {
+    --kiwi-green: #198754;
+    --kiwi-light: #d1e7dd;
+    --kiwi-dark: #146c43;
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+    --shadow-hover: 0 8px 16px rgba(0,0,0,0.2);
+    --border-radius: 8px;
+}
+
+/* Body and general styling */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation styling */
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--kiwi-light) !important;
+}
+
+/* Card styling */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Product card clickable area */
+.product-card-clickable a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card-clickable a:hover .card-title {
+    text-decoration: underline;
+}
+
+.product-card-clickable {
+    cursor: pointer;
+}
+
+.card-img-top {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Product cards specific styling */
+.product-card .card-title {
+    color: var(--kiwi-dark);
+    font-weight: 600;
+}
+
+.product-card .card-text {
+    color: #6c757d;
+}
+
+/* Button styling */
+.btn-success {
+    background-color: var(--kiwi-green);
+    border-color: var(--kiwi-green);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: var(--kiwi-dark);
+    border-color: var(--kiwi-dark);
+    transform: translateY(-1px);
+}
+
+.btn-outline-success {
+    color: var(--kiwi-green);
+    border-color: var(--kiwi-green);
+    font-weight: 500;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--kiwi-green);
+    border-color: var(--kiwi-green);
+}
+
+/* Form styling */
+.form-control:focus {
+    border-color: var(--kiwi-green);
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.input-group-text {
+    background-color: var(--kiwi-light);
+    border-color: #ced4da;
+}
+
+/* Search input styling */
+#searchInput {
+    border-left: none;
+}
+
+#searchInput:focus {
+    border-color: var(--kiwi-green);
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.input-group .bi-search {
+    color: #6c757d;
+}
+
+/* Cart badge styling */
+.badge {
+    font-size: 0.75rem;
+}
+
+/* Table styling for cart */
+.table th {
+    border-top: none;
+    background-color: var(--kiwi-light);
+    color: var(--kiwi-dark);
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Alert styling */
+.alert-success {
+    background-color: var(--kiwi-light);
+    border-color: var(--kiwi-green);
+    color: var(--kiwi-dark);
+}
+
+/* Empty state styling */
+.display-1 {
+    opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    #searchInput {
+        border-left: 1px solid #ced4da;
+        border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+    }
+}
+
+/* Animation for search results */
+.product-card {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.product-card.hidden {
+    opacity: 0;
+    display: none;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Focus styles for accessibility */
+.btn:focus,
+.form-control:focus {
+    outline: 2px solid var(--kiwi-green);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .btn,
+    .navbar,
+    .alert {
+        display: none !important;
+    }
+
+    .card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+}

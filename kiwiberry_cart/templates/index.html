@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Kiwiberry Orchard{% endblock %}
+
+{% block extra_head %}
+    <!-- Include search.js only on index page -->
+    <script src="{{ url_for('static', filename='js/search.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Search Bar -->
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" id="searchInput" placeholder="Search kiwiberries...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="row" id="productsContainer">
+        {% for product in products %}
+            <div class="col-md-6 col-lg-4 col-xl-3 mb-4 product-card"
+                 data-name="{{ product.name|lower }}"
+                 data-cultivar="{{ product.cultivar|lower }}">
+                <div class="card h-100 shadow-sm product-card-clickable">
+                    <!-- Clickable product image and content -->
+                    <a href="{{ url_for('product_detail', product_id=product.id) }}" class="text-decoration-none text-dark">
+                        <img src="{{ product.image_url }}"
+                             class="card-img-top"
+                             alt="{{ product.name }}"
+                             style="height: 200px; object-fit: cover;">
+
+                        <div class="card-body">
+                            <h5 class="card-title text-success">{{ product.name }}</h5>
+                            <p class="card-text text-muted small">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 mb-0 text-success">${{ "%.2f"|format(product.price) }}</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Add to Cart Button (not clickable to product) -->
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}" class="d-grid">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if not products %}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <i class="bi bi-info-circle"></i>
+                    No products found matching your search.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
