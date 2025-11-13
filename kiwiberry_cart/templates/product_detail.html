@@ -16,12 +16,13 @@
 
     <div class="row">
         <!-- Product Image -->
-        <div class="col-md-6">
+        <div class="col-md-6 mb-4 mb-md-0">
             <div class="card">
                 <img src="{{ product.image_url }}"
                      class="card-img-top"
                      alt="{{ product.name }}"
-                     style="height: 400px; object-fit: cover;">
+                     style="height: 300px; object-fit: cover;"
+                     onerror="this.style.height='300px'; this.style.objectFit='contain'; this.style.backgroundColor='#f8f9fa';">
             </div>
         </div>
 
@@ -41,8 +42,8 @@
 
                     <!-- Add to Cart Form -->
                     <div class="mt-4">
-                        <form method="POST" action="{{ url_for('product_detail', product_id=product.id) }}" class="d-flex align-items-center gap-3">
-                            <div class="d-flex align-items-center">
+                        <form method="POST" action="{{ url_for('product_detail', product_id=product.id) }}" class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-3">
+                            <div class="d-flex align-items-center flex-grow-1">
                                 <label for="quantity" class="form-label me-2 mb-0">Quantity:</label>
                                 <input type="number"
                                        name="quantity"
@@ -50,17 +51,17 @@
                                        value="1"
                                        min="1"
                                        max="99"
-                                       style="max-width: 80px;"
+                                       style="max-width: 100px;"
                                        required>
                             </div>
-                            <button type="submit" class="btn btn-success btn-lg">
+                            <button type="submit" class="btn btn-success btn-lg flex-grow-1 flex-md-grow-0">
                                 <i class="bi bi-cart-plus"></i> Add to Cart
                             </button>
                         </form>
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="mt-4 d-flex gap-2">
+                    <div class="mt-4 d-flex flex-column flex-md-row gap-2">
                         <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
                             <i class="bi bi-arrow-left"></i> Back to Products
                         </a>
@@ -73,8 +74,8 @@
 
             <!-- Product Information Cards -->
             <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="card bg-light">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="card bg-light h-100">
                         <div class="card-body text-center">
                             <i class="bi bi-info-circle display-4 text-success mb-3"></i>
                             <h5>Product Details</h5>
@@ -83,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card bg-light">
+                    <div class="card bg-light h-100">
                         <div class="card-body text-center">
                             <i class="bi bi-truck display-4 text-success mb-3"></i>
                             <h5>Fresh Delivery</h5>
